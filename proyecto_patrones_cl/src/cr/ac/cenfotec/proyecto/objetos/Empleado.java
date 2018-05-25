@@ -1,11 +1,14 @@
 package cr.ac.cenfotec.proyecto.objetos;
 
 public class Empleado {
+	private String cedula;
 	private String primerNombre;
 	private String segundoNombre;
 	private String primerApellido;
 	private String segundoApellido;
-	private String cedula;
+	private String correo;
+	private String usuario;
+	private String clave;
 	private String rol;
 	private Departamento areaFuncional;
 	
@@ -67,6 +70,30 @@ public class Empleado {
 
 	public void setAreaFuncional(Departamento areaFuncional) {
 		this.areaFuncional = areaFuncional;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 	
 	

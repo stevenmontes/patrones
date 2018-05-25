@@ -1,15 +1,20 @@
 package cr.ac.cenfotec.proyecto.objetos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Tramite {
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
 	private String descripcion;
-	private boolean estado;
-	private Tarea[] tareas;
+	private String estado;
+	private ArrayList<Tarea> listaTareas;
 		
 	public Tramite () {
-		
+		listaTareas = new ArrayList<>();
 	}
 	
 	public void setNombre(String nombre) {
@@ -20,16 +25,20 @@ public class Tramite {
 		return this.nombre;
 	}
 	
-	public void setFechaInicio(String fechaInicio) {
-		this.fecha_inicio = fechaInicio;
+	public void iniciarFecha() {
+		Date hoy = new Date();
+		DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+		this.fecha_inicio = formatoFecha.format(hoy);
 	}
 	
 	public String getFechaInicio() {
 		return this.fecha_inicio;
 	}
 	
-	public void setFechaFin(String fechaFin) {
-		this.fecha_fin = fechaFin;
+	public void finalizarFecha() {
+		Date fin = new Date();
+		DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+		this.fecha_fin = formatoFecha.format(fin);
 	}
 	
 	public String getFechaFin() {
@@ -44,21 +53,31 @@ public class Tramite {
 		return this.descripcion;
 	}
 	
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void activar () {
+		this.estado = "En proceso";
 	}
 	
-	public boolean getEstado() {
-		return this.estado;
-	}
-
-	public Tarea[] getTareas() {
-		return tareas;
-	}
-
-	public void setTareas(Tarea[] tareas) {
-		this.tareas = tareas;
+	public void desactivar() {
+		this.estado = "Inactivo";
 	}
 	
+	public void completar() {
+		this.estado = "Completado";
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+	public ArrayList<Tarea> getTareas() {
+		return listaTareas;
+	}
+
+	public void setTareas(ArrayList<Tarea> tareas) {
+		this.listaTareas = tareas;
+	}
+	
+	public void agregarTarea(Tarea nueva) {
+		listaTareas.add(nueva);
+	}
 	
 }

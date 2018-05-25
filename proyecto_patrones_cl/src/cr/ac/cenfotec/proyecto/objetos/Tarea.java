@@ -1,15 +1,16 @@
 package cr.ac.cenfotec.proyecto.objetos;
 
+import java.util.ArrayList;
+
 public class Tarea {
 	private String nombre;
 	private String descripcion;
-	private boolean estado;
-	private String fechaInicio;
-	private String fechaFin;
-	private Empleado encargado;
+	private String estado;
+	private Departamento areaEncargada;
+	private ArrayList<Paso> pasos;
 	
 	public Tarea() {
-		
+		pasos = new ArrayList<>();
 	}
 	
 	public void setNombre(String nombre) {
@@ -20,21 +21,6 @@ public class Tarea {
 		return nombre;
 	}
 	
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-	
-	public String getFechaInicio() {
-		return fechaInicio;
-	}
-	
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-	
-	public String getFechaFin() {
-		return fechaFin;
-	}
 	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
@@ -44,20 +30,36 @@ public class Tarea {
 		return descripcion;
 	}
 	
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void activar () {
+		this.estado = "En proceso";
 	}
 	
-	public boolean getEstado() {
+	public void desactivar() {
+		this.estado = "Inactivo";
+	}
+	
+	public void completar() {
+		this.estado = "Completado";
+	}
+	
+	public String getEstado() {
 		return this.estado;
 	}
 
-	public Empleado getEncargado() {
-		return encargado;
+	public Departamento getAreaEncargada() {
+		return areaEncargada;
 	}
 
-	public void setEncargado(Empleado encargado) {
-		this.encargado = encargado;
+	public void setAreaEncargada(Departamento encargado) {
+		this.areaEncargada = encargado;
+	}
+
+	public ArrayList<Paso> getPasos() {
+		return pasos;
+	}
+
+	public void setPasos(ArrayList<Paso> pasos) {
+		this.pasos = pasos;
 	}
 	
 	

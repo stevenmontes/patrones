@@ -30,11 +30,11 @@ CREATE TABLE ttarea(
 	CONSTRAINT CHK_estado_tarea CHECK (estado IN ('Inactivo', 'En proceso', 'Completado'))
 )
 
-CREATE TABLE tpaso(
+CREATE TABLE tpaso (
 	id INT NOT NULL CONSTRAINT PK_paso PRIMARY KEY IDENTITY (1,1),
 	descripcion VARCHAR(300) NOT NULL,
 	estado VARCHAR(15) NOT NULL CONSTRAINT DF_estado_paso DEFAULT 'Inactivo',
-	id_tarea INT NOT NULL CONSTRAINT FK_tarea_paso FOREIGN KEY ttarea(id),
+	id_tarea INT NOT NULL CONSTRAINT FK_tarea_paso FOREIGN KEY REFERENCES ttarea(id),
 	CONSTRAINT CHK_estado_paso CHECK (estado IN ('Inactivo', 'En proceso', 'Completado'))
 )
 
@@ -49,13 +49,13 @@ CREATE TABLE templeado (
 	usuario VARCHAR(25) NOT NULL,
 	clave VARCHAR(25) NOT NULL,
 	rol VARCHAR(50) NOT NULL,
-	id_area_funcional INT NOT NULL CONSTRAINT FK_area_empleado FOREIGN KEY REFERENCES templeado(id)
+	id_area_funcional INT NOT NULL CONSTRAINT FK_area_empleado FOREIGN KEY REFERENCES tarea_funcional(id)
 )
 
 CREATE TABLE tpasos_x_empleados(
 	id INT NOT NULL CONSTRAINT PK_pasos_x_empleados PRIMARY KEY IDENTITY (1,1),
 	fecha_inicio  DATE NOT NULL,
-	fecha_fin DATE NULL CONSTRAINT DF_fecha_fin_proceso DEFAULT '0000-00-00',
+	fecha_fin DATE NULL CONSTRAINT DF_fecha_fin_tipe DEFAULT '0000-00-00',
 	duracion TIME NULL, 
 	id_paso INT NOT NULL CONSTRAINT FK_paso_tipe FOREIGN KEY REFERENCES tpaso(id),
 	id_empleado INT NOT NULL CONSTRAINT FK_empleado_tipe FOREIGN KEY REFERENCES templeado(id)

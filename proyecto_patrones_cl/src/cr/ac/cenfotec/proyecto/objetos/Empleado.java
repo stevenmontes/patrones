@@ -15,6 +15,17 @@ public class Empleado {
 	public Empleado() {
 		
 	}
+	
+	public Empleado(String cedula, String p_nombre, String s_nombre, String p_apellido, String s_apellido, String correo, String usuario, String rol) {
+		this.cedula = cedula;
+		this.primerNombre = p_nombre;
+		this.segundoNombre = s_nombre;
+		this.primerApellido = p_apellido;
+		this.segundoApellido = s_apellido;
+		this.correo = correo;
+		this.usuario = usuario;
+		this.rol = rol;
+	}
 
 	public String getPrimerNombre() {
 		return primerNombre;

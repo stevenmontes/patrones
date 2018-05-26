@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Tramite {
+	private String codigo;
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
@@ -15,8 +16,26 @@ public class Tramite {
 		
 	public Tramite () {
 		listaTareas = new ArrayList<>();
+	}	
+	
+	public Tramite(String codigo, String nombre, String fecha_inicio, String fecha_fin, String descripcion, String estado ) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.fecha_inicio = fecha_inicio;
+		this.fecha_fin = fecha_fin;
+		this.descripcion = descripcion;
+		this.estado = estado;
 	}
 	
+	public String getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -68,11 +87,12 @@ public class Tramite {
 	public String getEstado() {
 		return estado;
 	}
-	public ArrayList<Tarea> getTareas() {
+	
+	public ArrayList<Tarea> getlistaTareas() {
 		return listaTareas;
 	}
 
-	public void setTareas(ArrayList<Tarea> tareas) {
+	public void setlistaTareas(ArrayList<Tarea> tareas) {
 		this.listaTareas = tareas;
 	}
 	

@@ -1,11 +1,20 @@
 package cr.ac.cenfotec.proyecto.objetos;
 
 public class Departamento {
+	private String codigo;
 	private String nombre;
 	private String descripcion;
 	
 	public Departamento() {
 		
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {

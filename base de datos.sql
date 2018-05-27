@@ -6,11 +6,11 @@ CREATE TABLE tproceso(
 	codigo VARCHAR(50) NOT NULL CONSTRAINT UNQ_codigo_proceso UNIQUE,
 	nombre VARCHAR(50) NOT NULL,
 	descripcion VARCHAR(300) NOT NULL,
-	fecha_inicio DATE NULL CONSTRAINT DF_fecha_inicio_proceso DEFAULT '0000-00-00',
-	fecha_fin DATE NULL CONSTRAINT DF_fecha_fin_proceso DEFAULT '0000-00-00',
+	fecha_inicio DATE NULL CONSTRAINT DF_fecha_inicio_proceso DEFAULT '1998/01/01',
+	fecha_fin DATE NULL CONSTRAINT DF_fecha_fin_proceso DEFAULT '1998/01/01',
 	estado VARCHAR(15) NOT NULL CONSTRAINT DF_estado_proceso DEFAULT 'Inactivo',
 	CONSTRAINT CHK_estado_proceso CHECK (estado IN ('Inactivo', 'En proceso', 'Completado'))
-)
+	)
 
 CREATE TABLE	tarea_funcional(
 	id INT NOT NULL CONSTRAINT PK_area_funcional PRIMARY KEY IDENTITY (1,1),
@@ -67,7 +67,7 @@ CREATE TABLE tpasos_x_empleados(
 	id_empleado INT NOT NULL CONSTRAINT FK_empleado_tipe FOREIGN KEY REFERENCES templeado(id)
 )
 
-CREATE PROCEDURE pa_inIciar_sesion 
+CREATE PROCEDURE pa_iniciar_sesion 
 @usuario VARCHAR(25),
 @clave VARCHAR(25)
 AS

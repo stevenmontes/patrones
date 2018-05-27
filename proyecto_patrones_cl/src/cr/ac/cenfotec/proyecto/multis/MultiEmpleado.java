@@ -11,9 +11,9 @@ public class MultiEmpleado {
 		
 	}
 	
-	public String[] iniciarSesion (String usuario, String clave) throws Exception {
+	public String[] iniciarSesion (String usuario, String clave){
 		String consulta = "{Call dbo.pa_iniciar_sesion ('" + usuario + "', '" + clave + "')}";
-		String [] info = new String[4];
+		String [] info = new String[5];
 		
 		try {
 			ResultSet rs = Conector.getConector().ejecutarSQL(consulta, true);
@@ -23,16 +23,17 @@ public class MultiEmpleado {
 				info[1] = rs.getString("primer_nombre");
 				info[2] = rs.getString("primer_apellido");
 				info[3] = rs.getString("id_area_funcional");
+				info[4] = rs.getString("Se inicio sesion con exito");
 			}
 		} catch (Exception ex) {
-			throw ex;
+			info[4] = "El nombre del usuario o clave no coinciden entre si.";
 		}
 		
 		return info;
 	}
 	
 	public String registrarEmpleado(Empleado E){
-		String consulta = "{Call dbo.pa_registrar_empleado ('" + E.getCedula() + "', '" + E.getPrimerNombre() + "', '" + E.getSegundoNombre() + "', '"+E.getPrimerApellido()+"', '"+E.getSegundoApellido()+"', '"+E.getCorreo()+"', '"+E.getUsuario()+"', '"+E.getClave()+"', '"+E.getRol()+"', '"+E.getAreaFuncional()+"')}";
+		String consulta = "{Call dbo.pa_registrar_empleado ('" + E.getCedula() + "', '" + E.getPrimerNombre() + "', '" + E.getSegundoNombre() + "', '"+E.getPrimerApellido()+"', '"+E.getSegundoApellido()+"', '"+E.getCorreo()+"', '"+E.getUsuario()+"', '"+E.getClave()+"', '"+E.getRol()+"', '"+E.getAreaFuncional().getCodigo()+"')}";
 		String result;
 		
 		try {
@@ -70,12 +71,30 @@ public class MultiEmpleado {
         		Empleado Ex = new Empleado(rs.getString("cedula"), rs.getString("primer_nombre"), 
         								 rs.getString("segundo_nombre"), rs.getString("primer_apellido"), 
         								 rs.getString("segundo_apellido"), rs.getString("correo"),
-        								 rs.getString("usuario"), rs.getString("rol"));
+        								 rs.getString("usuario"), rs.getString("clave"), 
+        								 rs.getString("rol"));
         		lista.add(Ex);
         	}
 
         } catch (Exception ex) {
         	throw ex;
+        }
+
+        return lista;
+	}
+	
+	public ArrayList<String> obtenerCodigos(){
+        String consulta = "{Call dbo.pa_obtener_cedulas_empleados";
+        ArrayList<String> lista = new ArrayList<>();
+
+        try {
+                ResultSet rs = Conector.getConector().ejecutarSQL(consulta, true);
+                
+                while(rs.next()) {
+                	lista.add(rs.getString("cedula"));
+                }
+
+        } catch (Exception ex) {
         }
 
         return lista;

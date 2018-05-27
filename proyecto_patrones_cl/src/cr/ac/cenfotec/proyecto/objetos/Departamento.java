@@ -8,6 +8,16 @@ public class Departamento {
 	public Departamento() {
 		
 	}
+	
+	public Departamento(String codigo, String nombre, String descripcion) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+	
+	public Departamento(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getCodigo() {
 		return codigo;

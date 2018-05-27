@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Paso {
 	private String descripcion;
+	private boolean respuesta;
 	private String estado;
 	private Empleado encargado;
 	private String fechaInicio;
@@ -13,6 +14,18 @@ public class Paso {
 	
 	public Paso () {
 		
+	}
+
+	public boolean isRespuesta() {
+		return respuesta;
+	}
+
+	public void aceptar() {
+		this.respuesta = true;
+	}
+	
+	public void rechazar() {
+		this.respuesta = false;
 	}
 
 	public String getDescripcion() {

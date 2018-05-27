@@ -1,5 +1,8 @@
 package cr.ac.cenfotec.proyecto.multis;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import cr.ac.cenfotec.proyecto.conexion.Conector;
 import cr.ac.cenfotec.proyecto.objetos.Departamento;
 
@@ -38,5 +41,22 @@ public class MultiDepartamento {
         }
 
         return resultado;
+	}
+	
+	public ArrayList<String> obtenerCodigos () {
+        String consulta = "{Call dbo.pa_obtener_codigos_area_funcional";
+        ArrayList<String> lista = new ArrayList<>();
+
+        try {
+                ResultSet rs = Conector.getConector().ejecutarSQL(consulta, true);
+                
+                while(rs.next()) {
+                	lista.add(rs.getString("codigo"));
+                }
+
+        } catch (Exception ex) {
+        }
+
+        return lista;
 	}
 }

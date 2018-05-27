@@ -3,6 +3,7 @@ package cr.ac.cenfotec.proyecto.objetos;
 import java.util.ArrayList;
 
 public class Tarea {
+	private String codigo;
 	private String nombre;
 	private String descripcion;
 	private String estado;
@@ -13,6 +14,21 @@ public class Tarea {
 		pasos = new ArrayList<>();
 	}
 	
+	public Tarea(String codigo, String nombre, String descripcion) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.pasos = new ArrayList<>();
+	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

@@ -18,6 +18,13 @@ public class Tramite {
 		listaTareas = new ArrayList<>();
 	}	
 	
+	public Tramite(String codigo, String nombre, String descripcion) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		listaTareas = new ArrayList<>();
+	}
+	
 	public Tramite(String codigo, String nombre, String fecha_inicio, String fecha_fin, String descripcion, String estado ) {
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -25,6 +32,7 @@ public class Tramite {
 		this.fecha_fin = fecha_fin;
 		this.descripcion = descripcion;
 		this.estado = estado;
+		listaTareas = new ArrayList<>();
 	}
 	
 	public String getCodigo() {

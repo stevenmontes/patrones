@@ -87,4 +87,22 @@ public class MultiTramite {
 
         return lista;
 	}	
+	
+	public ArrayList<String> obtenerCodigos(){
+        String consulta = "{Call dbo.pa_obtener_codigos_procesos";
+        ArrayList<String> lista = new ArrayList<>();
+
+        try {
+                ResultSet rs = Conector.getConector().ejecutarSQL(consulta, true);
+                
+                while(rs.next()) {
+                	lista.add(rs.getString("codigo"));
+                }
+
+        } catch (Exception ex) {
+        }
+
+        return lista;
+	}
+	
 }

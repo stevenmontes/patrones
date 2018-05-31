@@ -23,8 +23,9 @@ public class MultiEmpleado {
 				info[1] = rs.getString("primer_nombre");
 				info[2] = rs.getString("primer_apellido");
 				info[3] = rs.getString("id_area_funcional");
-				info[4] = rs.getString("Se inicio sesion con exito");
+				info[4] = "Se inicio sesion con exito";
 			}
+			
 		} catch (Exception ex) {
 			info[4] = "El nombre del usuario o clave no coinciden entre si.";
 		}
@@ -40,7 +41,7 @@ public class MultiEmpleado {
 			Conector.getConector().ejecutarSQL(consulta, true);
 			result = "Se ha registrado exitosamente el empleado.";
 		} catch (Exception ex) {
-			result = "No se pudo registrar el empleado. Vuelve a intentarlo.";
+			result = "No se pudo registrar el empleado. Vuelve a intentarlo." + ex.getMessage();
 		}
 		
 		return result;
@@ -84,7 +85,7 @@ public class MultiEmpleado {
 	}
 	
 	public ArrayList<String> obtenerCodigos(){
-        String consulta = "{Call dbo.pa_obtener_cedulas_empleados";
+        String consulta = "{Call dbo.pa_obtener_cedulas_empleados}";
         ArrayList<String> lista = new ArrayList<>();
 
         try {

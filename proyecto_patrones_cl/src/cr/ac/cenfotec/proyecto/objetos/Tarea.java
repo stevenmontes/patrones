@@ -21,6 +21,14 @@ public class Tarea {
 		this.pasos = new ArrayList<>();
 	}
 	
+	public Tarea(String codigo, String nombre, String descripcion, String estado) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.pasos = new ArrayList<>();
+	}
+	
 	public String getCodigo() {
 		return codigo;
 	}

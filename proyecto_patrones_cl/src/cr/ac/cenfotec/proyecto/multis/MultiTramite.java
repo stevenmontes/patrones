@@ -29,9 +29,7 @@ public class MultiTramite {
 	}
 	
 	public String modificarTramite (Tramite E) {
-        String consulta = "{Call dbo.pa_modificar_proceso ('" + E.getCodigo() + "','" + E.getNombre() + "',"
-        													+ "'"+E.getFechaInicio()+"','"+E.getFechaFin()+"',"
-        													+ "'" + E.getDescripcion() + "', '"+E.getEstado()+"')}";
+        String consulta = "{Call dbo.pa_modificar_proceso ('" + E.getCodigo() + "','" + E.getNombre() + "', '" + E.getDescripcion() + "')}";
         String resultado;
 
         try {
@@ -46,9 +44,9 @@ public class MultiTramite {
         return resultado;
 	}
 	
-	public ArrayList<Tramite> listarTramiteActivas (){
+	public ArrayList<Tramite> listarTramites (){
 		ArrayList<Tramite> lista = new ArrayList<>();
-        String consulta = "{Call dbo.pa_listar_proceso_activa }";
+        String consulta = "{Call dbo.pa_listar_procesos }";
 
         try {
         	ResultSet rs = Conector.getConector().ejecutarSQL(consulta, true);
@@ -89,7 +87,7 @@ public class MultiTramite {
 	}	
 	
 	public ArrayList<String> obtenerCodigos(){
-        String consulta = "{Call dbo.pa_obtener_codigos_procesos";
+        String consulta = "{Call dbo.pa_obtener_codigos_procesos}";
         ArrayList<String> lista = new ArrayList<>();
 
         try {

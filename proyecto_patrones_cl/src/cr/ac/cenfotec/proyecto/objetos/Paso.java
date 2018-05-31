@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Paso {
+	private int id;
+	private String codigo;
+	private String nombre;
 	private String descripcion;
 	private boolean respuesta;
 	private String estado;
@@ -14,6 +17,36 @@ public class Paso {
 	
 	public Paso () {
 		
+	}
+	
+	public Paso(String codigo, String nombre, String descripcion) {
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.nombre = nombre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public boolean isRespuesta() {

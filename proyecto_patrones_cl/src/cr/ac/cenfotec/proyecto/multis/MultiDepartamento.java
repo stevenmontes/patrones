@@ -44,7 +44,7 @@ public class MultiDepartamento {
 	}
 	
 	public ArrayList<String> obtenerCodigos () {
-        String consulta = "{Call dbo.pa_obtener_codigos_area_funcional";
+        String consulta = "{Call dbo.pa_obtener_codigos_area_funcional}";
         ArrayList<String> lista = new ArrayList<>();
 
         try {
